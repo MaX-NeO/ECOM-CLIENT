@@ -27,17 +27,7 @@
    * Download and install Node.js 22 from the official site or use a version manager:
 
      * Using the Node website: [https://nodejs.org/](https://nodejs.org/)
-     * Using `nvm` (recommended for managing versions):
 
-       ```bash
-       # install nvm if you don't have it (macOS / Linux)
-       curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.4/install.sh | bash
-       # close + reopen your terminal, then:
-       nvm install 22
-       nvm use 22
-       ```
-
-   * Why Node 22? You're following Node 22 for consistency in this doc; Vite and modern React tooling work well with Node 18+. Use Node 22 when you specifically want that runtime.
 
 2. **Confirm npm is installed**
 
