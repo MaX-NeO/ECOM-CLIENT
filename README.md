@@ -15,10 +15,8 @@
 5. [Run the dev server](#run-the-dev-server)
 6. [Build & preview for production](#build--preview-for-production)
 7. [Common snippets (Router, Axios, Sonner, React-Bootstrap)](#common-snippets-router-axios-sonner-react-bootstrap)
-8. [Environment variables with Vite](#environment-variables-with-vite)
-9. [Project structure (suggested)](#project-structure-suggested)
-10. [Troubleshooting & tips](#troubleshooting--tips)
-11. [Further improvements](#further-improvements)
+8. [Project structure (suggested)](#project-structure-suggested)
+
 
 ---
 
