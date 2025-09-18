@@ -1,6 +1,6 @@
-# ECOM-CLIENT
+# ECOM-CLIENT 
 
-# React Frontend App — README
+# React Frontend App — README -JS with Bootstrap
 
 > Step-by-step developer documentation for creating a React frontend app using Vite (React + JavaScript), with Router, Axios, React-Bootstrap, Bootstrap and Sonner for toasts.
 
