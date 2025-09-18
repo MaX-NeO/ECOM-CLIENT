@@ -203,7 +203,7 @@ export default function App() {
 import axios from 'axios'
 
 const api = axios.create({
-  baseURL: import.meta.env.VITE_API_URL || 'http://localhost:4000/api',
+  baseURL: 'http://localhost:4000/api',
   withCredentials: true,
 })
 
@@ -250,17 +250,7 @@ export default function Home() {
 }
 ```
 
----
 
-## Environment variables with Vite
-
-* Vite exposes variables that start with `VITE_` to the client. Create a `.env` or `.env.local`:
-
-```
-VITE_API_URL=https://api.myapp.com
-```
-
-* Access in code using `import.meta.env.VITE_API_URL`.
 
 ---
 
@@ -297,45 +287,5 @@ my-app/
 
 ---
 
-## Further improvements (next steps)
 
-* Add linting & formatting: **ESLint**, **Prettier**.
-* Add TypeScript: convert project to `react-ts` template or gradually add types.
-* Add unit/integration tests: **Vitest**, **Jest**, **React Testing Library**.
-* Add CI (GitHub Actions) to run tests and deploy to hosting (Netlify, Vercel, GitHub Pages).
-* Add state management if needed: **Zustand**, **Redux Toolkit**, or React Context.
 
----
-
-## Useful commands cheat-sheet
-
-```bash
-# Create (interactive)
-npx create-vite@latest
-
-# Install dependencies
-npm install react-router-dom@6 axios react-bootstrap bootstrap sonner
-
-# Start dev server
-npm run dev
-
-# Build production bundle
-npm run build
-npm run preview
-```
-
----
-
-## License & contribution
-
-If you share this repository, add a `LICENSE` and a `CONTRIBUTING.md` describing how contributors should open issues and PRs.
-
----
-
-If you want, I can:
-
-* add a ready-to-copy `main.jsx` and `App.jsx` files,
-* convert this README into a `README.md` file in the repo (if you give me access to the repository), or
-* expand the Troubleshooting section with errors/console logs you received.
-
-Happy coding! 🚀
