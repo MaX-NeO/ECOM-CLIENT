@@ -9,7 +9,7 @@ import {
     TableRow,
 } from "@/components/ui/table"
 import { useEffect, useState } from "react"
-import { getAllProducts } from "@/api/api"
+import { deleteProduct, getAllProducts } from "@/api/api"
 import { toast } from "sonner"
 import Loading from "@/components/Loading"
 import type { AdminProductType } from "@/types"
@@ -24,12 +24,22 @@ const AdminProducts = () => {
             const response = await getAllProducts()
             if (response.status === 200) {
                 setProducts(response.data)
-                console.log(response.data)
             }
         } catch (error) {
             toast.error("Error while fetching Products")
         } finally {
             setLoading(false)
+        }
+    }
+    const handleDelete = async (id: string) => {
+        try {
+            const response = await deleteProduct(id)
+            if (response.status === 200) {
+                toast.success("Product Deleted !")
+                fetchdata()
+            }
+        } catch (error) {
+            toast.error("Error while fetching Products")
         }
     }
     useEffect(() => {
@@ -80,7 +90,7 @@ const AdminProducts = () => {
                                         <Button className="bg-blue-600 hover:bg-blue-500 cursor-pointer">
                                             <Pencil />
                                         </Button>
-                                        <Button className="bg-red-600 hover:bg-red-500 cursor-pointer">
+                                        <Button className="bg-red-600 hover:bg-red-500 cursor-pointer" onClick={() => handleDelete(product.id)}>
                                             <Trash2 />
                                         </Button>
                                     </TableCell>

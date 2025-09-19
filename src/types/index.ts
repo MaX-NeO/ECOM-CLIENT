@@ -10,7 +10,17 @@ type AdminProductType = {
     stock: number
 }
 
-export type { AdminProductType }
+type AddProductType = {
+    name: string,
+    description: string,
+    category: string,
+    tags: string,
+    price: number,
+    stock: number
+}
+
+
+export type { AdminProductType, AddProductType }
 
 //   "id": "string",
 //   "name": "string",
