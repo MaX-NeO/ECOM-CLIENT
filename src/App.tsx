@@ -7,6 +7,9 @@ import AdminOrders from "./pages/admin/AdminOrders"
 import UserProducts from "./pages/user/UserProducts"
 import AdminLayout from "./layouts/AdminLayout"
 import UserLayout from "./layouts/UserLayout"
+import UserOrders from "./pages/user/UserOrders"
+import UserProfile from "./pages/user/UserProfile"
+import UserCheckout from "./pages/user/UserCheckout"
 
 const App = () => {
     return (
@@ -25,6 +28,9 @@ const App = () => {
 
                 <Route element={<UserLayout />}>
                     <Route path="/user/products" element={<UserProducts />} />
+                    <Route path="/user/orders" element={<UserOrders />} />
+                    <Route path="/user/profile" element={<UserProfile />} />
+                    <Route path="/user/checkout" element={<UserCheckout />} />
                 </Route>
             </Routes>
         </div>
