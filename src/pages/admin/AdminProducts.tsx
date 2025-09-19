@@ -1,13 +1,10 @@
 import {
     AlertDialog,
-    AlertDialogAction,
-    AlertDialogCancel,
     AlertDialogContent,
     AlertDialogDescription,
     AlertDialogFooter,
     AlertDialogHeader,
     AlertDialogTitle,
-    AlertDialogTrigger,
 } from "@/components/ui/alert-dialog"
 import { Button } from "@/components/ui/button"
 import { Pencil, Plus, Trash2 } from "lucide-react"
@@ -19,7 +16,7 @@ import {
     TableHeader,
     TableRow,
 } from "@/components/ui/table"
-import { useEffect, useState } from "react"
+import React, { useEffect, useRef, useState } from "react"
 import { deleteProduct, getAllProducts } from "@/api/api"
 import { toast } from "sonner"
 import Loading from "@/components/Loading"
@@ -32,6 +29,13 @@ const AdminProducts = () => {
     const [products, setProducts] = useState<AdminProductType[]>([])
     const [loading, setLoading] = useState(true)
     const [addModel, showAddModel] = useState(false)
+
+    const nameRef = useRef<HTMLInputElement>(null)
+    const descriptionRef = useRef<HTMLInputElement>(null)
+    const categoryRef = useRef<HTMLInputElement>(null)
+    const tagsRef = useRef<HTMLInputElement>(null)
+    const stockRef = useRef<HTMLInputElement>(null)
+    const priceRef = useRef<HTMLInputElement>(null)
 
     const fetchdata = async () => {
         try {
@@ -55,6 +59,10 @@ const AdminProducts = () => {
         } catch (error) {
             toast.error("Error while fetching Products")
         }
+    }
+    const handleSubmit = async (e: React.FormEvent) => {
+        e.preventDefault();
+
     }
     useEffect(() => {
         fetchdata()
@@ -117,7 +125,7 @@ const AdminProducts = () => {
             }
 
             <AlertDialog open={addModel}>
-                <form>
+                <form onSubmit={handleSubmit}>
                     <AlertDialogContent>
                         <AlertDialogHeader>
                             <AlertDialogTitle>Add Product</AlertDialogTitle>
@@ -129,6 +137,7 @@ const AdminProducts = () => {
                                             id="name"
                                             type="text"
                                             placeholder="Phone"
+                                            ref={nameRef}
                                             required
                                         />
                                     </div>
@@ -138,6 +147,7 @@ const AdminProducts = () => {
                                             id="description"
                                             type="text"
                                             placeholder="Test Product"
+                                            ref={descriptionRef}
                                             required
                                         />
                                     </div>
@@ -148,6 +158,7 @@ const AdminProducts = () => {
                                             id="Cescription"
                                             type="text"
                                             placeholder="Electronics"
+                                            ref={categoryRef}
                                             required
                                         />
                                     </div>
@@ -158,6 +169,7 @@ const AdminProducts = () => {
                                             id="tags"
                                             type="text"
                                             placeholder="Tag1,Tag2"
+                                            ref={tagsRef}
                                             required
                                         />
                                     </div>
@@ -167,6 +179,7 @@ const AdminProducts = () => {
                                             id="price"
                                             type="number"
                                             placeholder="100.00"
+                                            ref={priceRef}
                                             required
                                         />
                                     </div>
@@ -177,6 +190,7 @@ const AdminProducts = () => {
                                             id="stock"
                                             type="number"
                                             placeholder="10"
+                                            ref={stockRef}
                                             required
                                         />
                                     </div>
@@ -184,10 +198,10 @@ const AdminProducts = () => {
                             </AlertDialogDescription>
                         </AlertDialogHeader>
                         <AlertDialogFooter className="flex flex-row flex-1">
-                            <Button className="bg-red-600 w-1/2 hover:bg-red-500">
+                            <Button className="bg-red-600 w-1/2 hover:bg-red-500" onClick={() => showAddModel(false)}>
                                 Cancel
                             </Button>
-                            <Button className="bg-green-600 hover:bg-green-500 w-1/2">
+                            <Button className="bg-green-600 hover:bg-green-500 w-1/2" type="submit">
                                 Add
                             </Button>
                         </AlertDialogFooter>
