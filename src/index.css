@@ -118,3 +118,9 @@
     @apply bg-background text-foreground;
   }
 }
+
+
+.active{
+  background-color: oklch(0.56 0.25 302);
+  color: white;
+}
