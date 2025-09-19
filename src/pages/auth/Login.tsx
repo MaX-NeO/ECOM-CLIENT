@@ -33,7 +33,7 @@ const Login = () => {
                                 <div className="flex items-center">
                                     <Label htmlFor="password">Password</Label>
                                 </div>
-                                <Input id="password" type="password" required />
+                                <Input id="password" type="password" required placeholder="**********"/>
                             </div>
                         </div>
                     </form>

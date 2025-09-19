@@ -5,6 +5,7 @@ import AdminProducts from "./pages/admin/AdminProducts"
 import AdminUsers from "./pages/admin/AdminUsers"
 import AdminOrders from "./pages/admin/AdminOrders"
 import UserProducts from "./pages/user/UserProducts"
+import AdminLayout from "./layouts/AdminLayout"
 
 const App = () => {
     return (
@@ -14,9 +15,12 @@ const App = () => {
                 <Route path="/" element={<Login />} />
                 <Route path="/register" element={<Register />} />
                 {/* admin */}
-                <Route path="/admin/products" element={<AdminProducts />} />
-                <Route path="/admin/users" element={<AdminUsers />} />
-                <Route path="/admin/orders" element={<AdminOrders />} />
+                <Route element={<AdminLayout />}>
+                    <Route path="/admin/products" element={<AdminProducts />} />
+                    <Route path="/admin/users" element={<AdminUsers />} />
+                    <Route path="/admin/orders" element={<AdminOrders />} />
+                </Route>
+
                 {/* user */}
                 <Route path="/user/products" element={<UserProducts />} />
             </Routes>
