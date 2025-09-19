@@ -29,8 +29,15 @@ type AdminUserType = {
     zip: string
     roles: "ADMIN" | "USER"
 }
-
-export type { AdminProductType, AddProductType, AdminUserType }
+type OrderType = {
+    id: string
+    userId: string
+    products: Record<string, number>
+    totalAmount: number
+    status: "PENDING" | "SHIPPED" | "CANCELLED" | "DELIVERED"
+    createdAt: string
+}
+export type { AdminProductType, AddProductType, AdminUserType, OrderType }
 
 //   "id": "string",
 //   "name": "string",

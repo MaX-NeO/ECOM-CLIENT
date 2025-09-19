@@ -225,7 +225,7 @@ const AdminUsers = () => {
 
                   <Label>Role</Label>
                   <Select value={role} onValueChange={(val: "ADMIN" | "USER") => setRole(val)}>
-                    <SelectTrigger>
+                    <SelectTrigger className="w-full">
                       <SelectValue placeholder="Select Role" />
                     </SelectTrigger>
                     <SelectContent>
@@ -271,7 +271,7 @@ const AdminUsers = () => {
 
                   <Label>Role</Label>
                   <Select value={editRole} onValueChange={(val: "ADMIN" | "USER") => setEditRole(val)}>
-                    <SelectTrigger>
+                    <SelectTrigger className="w-full">
                       <SelectValue placeholder="Select Role" />
                     </SelectTrigger>
                     <SelectContent>

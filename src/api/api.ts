@@ -18,17 +18,35 @@ const addUser = (user: any) => axios.post(`${API}/users/add`, user)
 const editUser = (id: string, user: any) => axios.put(`${API}/users/user/edit/${id}`, user)
 const deleteUser = (id: string) => axios.delete(`${API}/users/user/delete/${id}`)
 
+
+
+const placeOrder = (userId: string, products: Record<string, number>) => axios.post(`${API}/orders/${userId}/place`, products)
+
+const updateOrderStatus = (orderId: string, status: string) => axios.put(`${API}/orders/${orderId}/status?status=${status}`)
+
+const getAllOrders = () => axios.get(`${API}/orders/all`)
+const getOrderById = (id: string) => axios.get(`${API}/orders/${id}`)
+const getOrdersByUser = (userId: string) => axios.get(`${API}/orders/user/${userId}`)
+const deleteOrder = (id: string) => axios.delete(`${API}/orders/delete/${id}`)
+
+
 export {
-    authLogin, 
-    authRegister, 
-    getAllProducts, 
-    addNewProduct, 
-    editProduct, 
-    deleteProduct, 
+    authLogin,
+    authRegister,
+    getAllProducts,
+    addNewProduct,
+    editProduct,
+    deleteProduct,
     getAllUsers,
     getUserById,
     getUserByEmail,
     addUser,
     editUser,
-    deleteUser
+    deleteUser,
+    placeOrder,
+    updateOrderStatus,
+    getAllOrders,
+    getOrderById,
+    getOrdersByUser,
+    deleteOrder
 }
