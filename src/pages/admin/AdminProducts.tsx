@@ -205,8 +205,8 @@ const AdminProducts = () => {
                                         <Input id="stock" type="number" placeholder="10" ref={stockRef} required />
                                     </div>
                                 </div>
-                                <div className="flex flex-row flex-1">
-                                    <Button className="bg-red-600 w-1/2 hover:bg-red-500" onClick={() => showAddModel(false)}>Cancel</Button>
+                                <div className="flex flex-row flex-1 gap-2 mt-4">
+                                    <Button className="bg-red-600 w-1/2 hover:bg-red-500" type="button" onClick={() => showAddModel(false)}>Cancel</Button>
                                     <Button className="bg-green-600 hover:bg-green-500 w-1/2" type="submit">Add</Button>
                                 </div>
                             </form>
@@ -247,8 +247,8 @@ const AdminProducts = () => {
                                         <Input id="editstock" type="number" defaultValue={selectedProduct?.stock} ref={editStockRef} required />
                                     </div>
                                 </div>
-                                <div className="flex flex-row flex-1">
-                                    <Button className="bg-red-600 w-1/2 hover:bg-red-500" onClick={() => showEditModel(false)}>Cancel</Button>
+                                <div className="flex flex-row flex-1 gap-2 mt-4">
+                                    <Button className="bg-red-600 w-1/2 hover:bg-red-500"  type="button" onClick={() => showEditModel(false)}>Cancel</Button>
                                     <Button className="bg-green-600 hover:bg-green-500 w-1/2" type="submit">Update</Button>
                                 </div>
                             </form>
