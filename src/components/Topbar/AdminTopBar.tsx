@@ -2,7 +2,7 @@ import { NavLink } from "react-router-dom"
 
 const AdminTopBar = () => {
     return (
-        <div className="h-14 w-svw  fixed top-0 left-0 text-primary bg-white 
+        <div className="h-14 w-svw  text-primary bg-white 
     flex justify-center items-center border-b  border-violet-600 shadow-sm
      shadow-purple-600 px-4">
             <div className="w-[50%] h-full flex flex-row justify-start items-center gap-6">
