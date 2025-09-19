@@ -1,17 +1,37 @@
 import { Button } from "@/components/ui/button"
-import { Delete, Pencil, Plus, Trash2 } from "lucide-react"
+import { Pencil, Plus, Trash2 } from "lucide-react"
 import {
     Table,
     TableBody,
-    TableCaption,
     TableCell,
     TableHead,
     TableHeader,
     TableRow,
 } from "@/components/ui/table"
+import { useEffect, useState } from "react"
+import { getAllProducts } from "@/api/api"
 
 
 const AdminProducts = () => {
+    const [products, setProducts] = useState([])
+
+    const fetchdata = async () => {
+        try {
+            const response = await getAllProducts()
+            if (response.status === 200) {
+                setProducts(response.data)
+                
+            }
+        } catch (error) {
+            alert("error")
+        } finally {
+
+        }
+    }
+    useEffect(() => {
+        fetchdata()
+    }, [])
+
     return (
         <div className="mt-4 border-2 round-sm h-full w-full flex justify-center items-start flex-col">
             <div className="flex w-[98svw] h-12 justify-between items-center text-lg shadow-lg px-2 text-primary">
