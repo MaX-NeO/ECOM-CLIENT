@@ -37,7 +37,22 @@ type OrderType = {
     status: "PENDING" | "SHIPPED" | "CANCELLED" | "DELIVERED"
     createdAt: string
 }
-export type { AdminProductType, AddProductType, AdminUserType, OrderType }
+
+type Product = {
+    _id: string
+    name: string
+    description?: string
+    price: number
+    image?: string
+}
+
+type CartItem = {
+    id: string
+    name: string
+    price: number
+    qty: number
+}
+export type { AdminProductType, AddProductType, AdminUserType, OrderType, Product, CartItem }
 
 //   "id": "string",
 //   "name": "string",
