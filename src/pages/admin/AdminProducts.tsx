@@ -13,14 +13,14 @@ import { getAllProducts } from "@/api/api"
 
 
 const AdminProducts = () => {
-    const [products, setProducts] = useState([])
+    const [products, setProducts] = useState(null)
 
     const fetchdata = async () => {
         try {
             const response = await getAllProducts()
             if (response.status === 200) {
                 setProducts(response.data)
-                
+                console.log(response.data)
             }
         } catch (error) {
             alert("error")
