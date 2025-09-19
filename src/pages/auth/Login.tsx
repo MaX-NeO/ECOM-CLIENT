@@ -23,7 +23,15 @@ const Login = () => {
       if (response.status === 200) {
         toast.success("Login successful!")
         localStorage.setItem("user", JSON.stringify(response.data))
-        navigate("/admin/products")
+
+        const role = response.data.role
+        if (role === "ADMIN") {
+          navigate("/admin/products")
+        } else if (role === "USER") {
+          navigate("/user/products")
+        } else {
+          navigate("/") 
+        }
       }
     } catch (error: any) {
       toast.error(error.response?.data || "Login failed")
