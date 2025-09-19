@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button"
-import { Plus } from "lucide-react"
+import { Delete, Pencil, Plus, Trash2 } from "lucide-react"
 import {
     Table,
     TableBody,
@@ -19,7 +19,7 @@ const AdminProducts = () => {
                     Admin Propducts
                 </div>
                 <div className="w-1/2 flex justify-end items-center">
-                    <Button className="bg-green-600 hover:bg-green-500 rounded-none">
+                    <Button className="bg-green-600 hover:bg-green-500 rounded-sm">
                         <Plus /> Add Product
                     </Button>
                 </div>
@@ -32,7 +32,8 @@ const AdminProducts = () => {
                         <TableHead className="text-white">Category</TableHead>
                         <TableHead className="text-white">Tags</TableHead>
                         <TableHead className="text-white">Stock</TableHead>
-                        <TableHead className="text-white text-right">Price</TableHead>
+                        <TableHead className="text-white">Price</TableHead>
+                        <TableHead className="text-white text-right">Actions</TableHead>
                     </TableRow>
                 </TableHeader>
                 <TableBody>
@@ -42,7 +43,15 @@ const AdminProducts = () => {
                         <TableCell>Test</TableCell>
                         <TableCell>Credit,Card</TableCell>
                         <TableCell>100</TableCell>
-                        <TableCell className="text-right">$250.00</TableCell>
+                        <TableCell>100</TableCell>
+                        <TableCell className="flex w-full justify-end items-center gap-2">
+                            <Button className="bg-blue-600 hover:bg-blue-500 cursor-pointer">
+                                <Pencil />
+                            </Button>
+                            <Button className="bg-red-600 hover:bg-red-500 cursor-pointer">
+                                <Trash2 />
+                            </Button>
+                        </TableCell>
                     </TableRow>
                 </TableBody>
             </Table>
