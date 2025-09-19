@@ -24,6 +24,8 @@ import { deleteProduct, getAllProducts } from "@/api/api"
 import { toast } from "sonner"
 import Loading from "@/components/Loading"
 import type { AdminProductType } from "@/types"
+import { Input } from "@/components/ui/input"
+import { Label } from "@radix-ui/react-label"
 
 
 const AdminProducts = () => {
@@ -115,19 +117,82 @@ const AdminProducts = () => {
             }
 
             <AlertDialog open={addModel}>
-                <AlertDialogContent>
-                    <AlertDialogHeader>
-                        <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
-                        <AlertDialogDescription>
-                            This action cannot be undone. This will permanently delete your account
-                            and remove your data from our servers.
-                        </AlertDialogDescription>
-                    </AlertDialogHeader>
-                    <AlertDialogFooter>
-                        <AlertDialogCancel>Cancel</AlertDialogCancel>
-                        <AlertDialogAction>Continue</AlertDialogAction>
-                    </AlertDialogFooter>
-                </AlertDialogContent>
+                <form>
+                    <AlertDialogContent>
+                        <AlertDialogHeader>
+                            <AlertDialogTitle>Add Product</AlertDialogTitle>
+                            <AlertDialogDescription>
+                                <div className="flex flex-col gap-6">
+                                    <div className="grid gap-2">
+                                        <Label htmlFor="name">Name</Label>
+                                        <Input
+                                            id="name"
+                                            type="text"
+                                            placeholder="Phone"
+                                            required
+                                        />
+                                    </div>
+                                    <div className="grid gap-2">
+                                        <Label htmlFor="description">Description</Label>
+                                        <Input
+                                            id="description"
+                                            type="text"
+                                            placeholder="Test Product"
+                                            required
+                                        />
+                                    </div>
+
+                                    <div className="grid gap-2">
+                                        <Label htmlFor="category">Category</Label>
+                                        <Input
+                                            id="Cescription"
+                                            type="text"
+                                            placeholder="Electronics"
+                                            required
+                                        />
+                                    </div>
+
+                                    <div className="grid gap-2">
+                                        <Label htmlFor="tags">Tags</Label>
+                                        <Input
+                                            id="tags"
+                                            type="text"
+                                            placeholder="Tag1,Tag2"
+                                            required
+                                        />
+                                    </div>
+                                    <div className="grid gap-2">
+                                        <Label htmlFor="price">Price</Label>
+                                        <Input
+                                            id="price"
+                                            type="number"
+                                            placeholder="100.00"
+                                            required
+                                        />
+                                    </div>
+
+                                    <div className="grid gap-2">
+                                        <Label htmlFor="stock">Stock</Label>
+                                        <Input
+                                            id="stock"
+                                            type="number"
+                                            placeholder="10"
+                                            required
+                                        />
+                                    </div>
+                                </div>
+                            </AlertDialogDescription>
+                        </AlertDialogHeader>
+                        <AlertDialogFooter className="flex flex-row flex-1">
+                            <Button className="bg-red-600 w-1/2 hover:bg-red-500">
+                                Cancel
+                            </Button>
+                            <Button className="bg-green-600 hover:bg-green-500 w-1/2">
+                                Add
+                            </Button>
+                        </AlertDialogFooter>
+                    </AlertDialogContent>
+                </form>
             </AlertDialog>
 
         </div>
