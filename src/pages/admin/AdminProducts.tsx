@@ -10,6 +10,7 @@ import {
 } from "@/components/ui/table"
 import { useEffect, useState } from "react"
 import { getAllProducts } from "@/api/api"
+import { toast } from "sonner"
 
 
 const AdminProducts = () => {
@@ -23,7 +24,7 @@ const AdminProducts = () => {
                 console.log(response.data)
             }
         } catch (error) {
-            alert("error")
+            toast.error("Error while fetching Products")
         } finally {
 
         }
