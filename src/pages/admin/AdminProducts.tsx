@@ -1,3 +1,14 @@
+import {
+    AlertDialog,
+    AlertDialogAction,
+    AlertDialogCancel,
+    AlertDialogContent,
+    AlertDialogDescription,
+    AlertDialogFooter,
+    AlertDialogHeader,
+    AlertDialogTitle,
+    AlertDialogTrigger,
+} from "@/components/ui/alert-dialog"
 import { Button } from "@/components/ui/button"
 import { Pencil, Plus, Trash2 } from "lucide-react"
 import {
@@ -18,6 +29,7 @@ import type { AdminProductType } from "@/types"
 const AdminProducts = () => {
     const [products, setProducts] = useState<AdminProductType[]>([])
     const [loading, setLoading] = useState(true)
+    const [addModel, showAddModel] = useState(false)
 
     const fetchdata = async () => {
         try {
@@ -56,7 +68,7 @@ const AdminProducts = () => {
                     Admin Propducts
                 </div>
                 <div className="w-1/2 flex justify-end items-center">
-                    <Button className="bg-green-600 hover:bg-green-500 rounded-sm">
+                    <Button className="bg-green-600 hover:bg-green-500 rounded-sm" onClick={() => { showAddModel(true) }}>
                         <Plus /> Add Product
                     </Button>
                 </div>
@@ -101,6 +113,23 @@ const AdminProducts = () => {
                     </Table>
                 )
             }
+
+            <AlertDialog open={addModel}>
+                <AlertDialogContent>
+                    <AlertDialogHeader>
+                        <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
+                        <AlertDialogDescription>
+                            This action cannot be undone. This will permanently delete your account
+                            and remove your data from our servers.
+                        </AlertDialogDescription>
+                    </AlertDialogHeader>
+                    <AlertDialogFooter>
+                        <AlertDialogCancel>Cancel</AlertDialogCancel>
+                        <AlertDialogAction>Continue</AlertDialogAction>
+                    </AlertDialogFooter>
+                </AlertDialogContent>
+            </AlertDialog>
+
         </div>
     )
 }
