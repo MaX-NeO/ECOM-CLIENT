@@ -17,7 +17,7 @@ import {
     TableRow,
 } from "@/components/ui/table"
 import React, { useEffect, useRef, useState } from "react"
-import { deleteProduct, getAllProducts } from "@/api/api"
+import { addNewProduct, deleteProduct, getAllProducts } from "@/api/api"
 import { toast } from "sonner"
 import Loading from "@/components/Loading"
 import type { AdminProductType } from "@/types"
@@ -62,7 +62,25 @@ const AdminProducts = () => {
     }
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-
+        const newproduct = {
+            name: nameRef.current?.value || "",
+            description: descriptionRef.current?.value || "",
+            category: categoryRef.current?.value || "",
+            tags: tagsRef.current?.value || "",
+            stock: Number(stockRef.current?.value),
+            price: Number(priceRef.current?.value),
+        }
+        try {
+            const response = await addNewProduct(newproduct)
+            if (response.status === 200) {
+                toast.success("Product Added")
+                fetchdata()
+            }
+        } catch (error) {
+            toast.error("Error while adding Product !")
+        } finally {
+            showAddModel(false)
+        }
     }
     useEffect(() => {
         fetchdata()
@@ -125,11 +143,11 @@ const AdminProducts = () => {
             }
 
             <AlertDialog open={addModel}>
-                <form onSubmit={handleSubmit}>
-                    <AlertDialogContent>
-                        <AlertDialogHeader>
-                            <AlertDialogTitle>Add Product</AlertDialogTitle>
-                            <AlertDialogDescription>
+                <AlertDialogContent>
+                    <AlertDialogHeader>
+                        <AlertDialogTitle>Add Product</AlertDialogTitle>
+                        <AlertDialogDescription>
+                            <form onSubmit={handleSubmit}>
                                 <div className="flex flex-col gap-6">
                                     <div className="grid gap-2">
                                         <Label htmlFor="name">Name</Label>
@@ -195,21 +213,21 @@ const AdminProducts = () => {
                                         />
                                     </div>
                                 </div>
-                            </AlertDialogDescription>
-                        </AlertDialogHeader>
-                        <AlertDialogFooter className="flex flex-row flex-1">
-                            <Button className="bg-red-600 w-1/2 hover:bg-red-500" onClick={() => showAddModel(false)}>
-                                Cancel
-                            </Button>
-                            <Button className="bg-green-600 hover:bg-green-500 w-1/2" type="submit">
-                                Add
-                            </Button>
-                        </AlertDialogFooter>
-                    </AlertDialogContent>
-                </form>
+                                <div className="flex flex-row flex-1">
+                                    <Button className="bg-red-600 w-1/2 hover:bg-red-500" onClick={() => showAddModel(false)}>
+                                        Cancel
+                                    </Button>
+                                    <Button className="bg-green-600 hover:bg-green-500 w-1/2" type="submit">
+                                        Add
+                                    </Button>
+                                </div>
+                            </form>
+                        </AlertDialogDescription>
+                    </AlertDialogHeader>
+                </AlertDialogContent>
             </AlertDialog>
 
-        </div>
+        </div >
     )
 }
 
