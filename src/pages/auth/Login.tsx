@@ -2,9 +2,11 @@ import { Button } from "@/components/ui/button"
 import { Card, CardAction, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Label } from "@radix-ui/react-label"
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 
 const Login = () => {
+    const navigate= useNavigate()
+
     return (
         <div className="w-svw h-[90vh] flex justify-center items-center">
             <Card className="w-full max-w-sm">
@@ -39,7 +41,7 @@ const Login = () => {
                     </form>
                 </CardContent>
                 <CardFooter className="flex-col gap-2">
-                    <Button type="submit" className="w-full">
+                    <Button type="submit" className="w-full" onClick={()=>navigate('/admin/products')}>
                         Login
                     </Button>
   
