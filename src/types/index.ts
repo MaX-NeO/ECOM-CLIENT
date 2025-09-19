@@ -19,8 +19,18 @@ type AddProductType = {
     stock: number
 }
 
+type AdminUserType = {
+    id: string
+    name: string
+    email: string
+    password: string
+    street: string
+    city: string
+    zip: string
+    roles: "ADMIN" | "USER"
+}
 
-export type { AdminProductType, AddProductType }
+export type { AdminProductType, AddProductType, AdminUserType }
 
 //   "id": "string",
 //   "name": "string",
