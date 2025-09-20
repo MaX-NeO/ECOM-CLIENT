@@ -10,14 +10,16 @@ import UserLayout from "./layouts/UserLayout"
 import UserOrders from "./pages/user/UserOrders"
 import UserProfile from "./pages/user/UserProfile"
 import UserCheckout from "./pages/user/UserCheckout"
+import WebLayout from "./layouts/WebLayout"
 
 const App = () => {
     return (
         <div>
             <Routes>
-
-                <Route path="/" element={<Login />} />
-                <Route path="/register" element={<Register />} />
+                <Route element={<WebLayout />}>
+                    <Route path="/" element={<Login />} />
+                    <Route path="/register" element={<Register />} />
+                </Route>
 
                 <Route element={<AdminLayout />}>
                     <Route path="/admin/products" element={<AdminProducts />} />
