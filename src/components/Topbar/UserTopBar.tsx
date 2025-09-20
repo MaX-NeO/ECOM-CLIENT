@@ -95,7 +95,7 @@ const UserTopBar = () => {
       <div className="w-[50%] h-full flex flex-row justify-start items-center gap-4">
         <NavLink to="/user/products" className="h-full flex justify-center items-center font-bold text-xl px-3">Products</NavLink>
         <NavLink to="/user/orders" className="h-full flex justify-center items-center font-bold text-xl px-3">Orders</NavLink>
-        <NavLink to="/user/profile" className="h-full flex justify-center items-center font-bold text-xl px-3">Profile</NavLink>
+        {/* <NavLink to="/user/profile" className="h-full flex justify-center items-center font-bold text-xl px-3">Profile</NavLink> */}
       </div>
       <div className="w-[50%] h-full flex flex-row justify-end items-center gap-4">
         {userName && <span className="font-semibold text-lg">{userName}</span>}

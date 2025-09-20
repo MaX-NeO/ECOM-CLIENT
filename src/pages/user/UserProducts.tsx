@@ -3,6 +3,7 @@ import { getAllProducts } from "@/api/api"
 import { Card, CardHeader, CardTitle, CardContent, CardFooter } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import type { CartItem, Product } from "@/types"
+import { toast } from "sonner"
 
 const CART_KEY = "cart"
 
@@ -62,6 +63,7 @@ const UserProducts = () => {
         next = [...prev, item]
       }
       localStorage.setItem(CART_KEY, JSON.stringify(next))
+      toast.success("Product Added to Cart")
       window.dispatchEvent(new CustomEvent("cart-updated", { detail: next }))
       return next
     })
