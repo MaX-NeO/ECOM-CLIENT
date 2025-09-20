@@ -21,9 +21,7 @@ const WebLayout = () => {
             } catch (err) {
                 navigate("/")
             }
-        } else {
-            navigate("/")
-        }
+        } 
     }, [navigate])
 
     return (

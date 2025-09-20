@@ -4,9 +4,15 @@ import { Card, CardHeader, CardTitle, CardContent, CardFooter } from "@/componen
 import { Button } from "@/components/ui/button"
 import type { CartItem, Product } from "@/types"
 
-
-
 const CART_KEY = "cart"
+
+const normalizeItem = (item: any): CartItem => {
+  const id = item.id ?? item._id ?? item.productId ?? ""
+  const name = item.name ?? item.title ?? ""
+  const price = typeof item.price === "number" ? item.price : Number(item.price ?? 0)
+  const qty = typeof item.qty === "number" ? item.qty : Number(item.qty ?? 1)
+  return { id, name, price, qty }
+}
 
 const UserProducts = () => {
   const [products, setProducts] = useState<Product[]>([])
@@ -26,7 +32,12 @@ const UserProducts = () => {
       const stored = localStorage.getItem(CART_KEY)
       if (stored) {
         const parsed = JSON.parse(stored)
-        setCartItems(Array.isArray(parsed) ? parsed : [])
+        if (Array.isArray(parsed)) {
+          const normalized = parsed.map((it) => normalizeItem(it)).filter((it) => it.id)
+          setCartItems(normalized)
+        } else {
+          setCartItems([])
+        }
       }
     } catch {
       setCartItems([])
@@ -34,27 +45,26 @@ const UserProducts = () => {
   }, [])
 
   const handleAddToCart = (product: Product) => {
-    const currentCart = [...cartItems]
-    const idx = currentCart.findIndex((p) => p.id === product._id)
-
-    let next: CartItem[]
-    if (idx !== -1) {
-      next = currentCart.map((p, i) =>
-        i === idx ? { ...p, qty: p.qty + 1 } : p
-      )
-    } else {
-      const item: CartItem = {
-        id: product._id,
-        name: product.name,
-        price: product.price,
-        qty: 1,
+    setCartItems((prev) => {
+      const productId = product._id ?? (product as any).id ?? ""
+      if (!productId) return prev
+      const existingIndex = prev.findIndex((p) => p.id === productId)
+      let next: CartItem[]
+      if (existingIndex !== -1) {
+        next = prev.map((p) => (p.id === productId ? { ...p, qty: p.qty + 1 } : p))
+      } else {
+        const item: CartItem = {
+          id: productId,
+          name: product.name ?? "",
+          price: typeof product.price === "number" ? product.price : Number(product.price ?? 0),
+          qty: 1,
+        }
+        next = [...prev, item]
       }
-      next = [...currentCart, item]
-    }
-
-    setCartItems(next)
-    localStorage.setItem(CART_KEY, JSON.stringify(next))
-    window.dispatchEvent(new CustomEvent("cart-updated", { detail: next }))
+      localStorage.setItem(CART_KEY, JSON.stringify(next))
+      window.dispatchEvent(new CustomEvent("cart-updated", { detail: next }))
+      return next
+    })
   }
 
   return (
